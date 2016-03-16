@@ -4,7 +4,7 @@ var express = require('express');
 var compression = require('compression');
 var favicon = require('serve-favicon');
 var cookieParser = require('cookie-parser');
-var bodyParser = require('body-Parser');
+var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 
 var dbURL = process.env.MONGOLAB_URI || "mongodb://localhost/DomoMaker";
