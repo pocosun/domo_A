@@ -6,6 +6,7 @@ var favicon = require('serve-favicon');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
+var session = require('express-session');
 
 var dbURL = process.env.MONGOLAB_URI || "mongodb://localhost/DomoMaker";
 
@@ -27,6 +28,12 @@ app.use(compression());
 app.use(bodyParser.urlencoded({
 	extended: true
 }));
+app.use(session({
+	key: "sessionid",
+	secret: 'Domo Arigato',
+	resave: true,
+	saveUninitialized: true
+}))
 app.set('view engine', 'jade');
 app.set('views', __dirname + '/views');
 app.use(favicon(__dirname + '/../client/img/favicon.png'));
