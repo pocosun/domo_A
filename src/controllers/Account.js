@@ -2,6 +2,19 @@ var models = require('../models');
 
 var Account = models.Account;
 
+var makerPage = function(req, res){
+	
+	Account.AccountModel.findAllUsers(function(err, docs){
+		if(err){
+			console.log(err);
+			return res.status(400).json({error:"ERAWR"});
+		}
+
+		res.render('users', {csrfToken: req.csrfToken(), users: docs});
+	});
+
+};
+
 var loginPage = function(req, res){
 	res.render('login', {csrfToken: req.csrfToken()});
 };
@@ -69,3 +82,4 @@ module.exports.login = login;
 module.exports.logout = logout;
 module.exports.signupPage = signupPage;
 module.exports.signup = signup;
+module.exports.makerPage = makerPage;
